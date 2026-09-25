@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import { WaxSeal } from '@/components/wax-seal'
 import { saveAnniversaryEntered, isAnniversaryEntered, DEV_MODE } from '@/lib/unlock'
 
@@ -88,6 +89,18 @@ export function AnniversaryLock({ onUnlock }: AnniversaryLockProps) {
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#FFF8E8] via-[#FFE3E8] to-[#EAF7F2] px-6 py-24">
+      {/* Background photo of Julia */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/gallery/gallery-027.jpeg"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-25"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8E8]/80 via-[#FFE3E8]/60 to-[#EAF7F2]/85" />
+      </div>
       {/* Background Sparkles */}
       <div className="pointer-events-none absolute inset-0">
         {Array.from({ length: 25 }).map((_, i) => (

@@ -3,7 +3,7 @@
 //
 // DEV_MODE: when true, ALL routes are open regardless of date.
 // Set this to false to re-enable date-based locking after content upload + testing.
-export const DEV_MODE = true
+export const DEV_MODE = false
 
 // ─── Session gate ─────────────────────────────────────────────────────────────
 // The archive is entered once per tab through the seal + invitation flow.

@@ -64,18 +64,18 @@ export function WaxSeal({ onCrack, shouldCrack = false, size = 120, pulse = true
         />
         {/* Inner ring */}
         <circle cx="50" cy="50" r="22" fill="none" stroke="#D4AF37" strokeWidth="1" opacity="0.7" />
-        {/* Letter E */}
+        {/* Letter S&J */}
         <text
           x="50"
           y="57"
           textAnchor="middle"
           fill="#FFFAF7"
-          fontSize="22"
+          fontSize="15"
           fontFamily="Georgia, serif"
           fontWeight="bold"
           opacity="0.9"
         >
-          E
+          S&J
         </text>
       </svg>
     </div>
