@@ -1,0 +1,39 @@
+{
+  "anniversarySections": [
+    {
+      "title": "The days we keep",
+      "subtitle": "A bright little archive of Julia and Suliaman, in photographs and motion.",
+      "layout": "mixed",
+      "themeWord": "Together",
+      "closingNote": "Every frame still feels like us.",
+      "expectedAssetCount": 25,
+      "items": [
+        { "id": 1, "src": "/gallery/gallery-001.jpeg", "caption": "A moment we wanted to keep." },
+        { "id": 2, "src": "/gallery/gallery-002.jpeg", "caption": "The kind of ordinary that becomes precious." },
+        { "id": 3, "src": "/gallery/gallery-003.jpeg", "caption": "A little joy, exactly where it belongs." },
+        { "id": 4, "src": "/gallery/gallery-004.jpeg", "caption": "The glow of another day together." },
+        { "id": 5, "src": "/gallery/gallery-005.jpeg", "caption": "A memory with its own kind of sunshine." },
+        { "id": 6, "src": "/gallery/gallery-006.jpeg", "caption": "Still choosing the same side." },
+        { "id": 7, "src": "/gallery/gallery-007.jpeg", "caption": "A face, a laugh, a whole story." },
+        { "id": 8, "src": "/gallery/gallery-008.jpeg", "caption": "One more reason to be grateful." },
+        { "id": 9, "src": "/gallery/gallery-009.jpeg", "caption": "A soft pause in our busy lives." },
+        { "id": 10, "src": "/gallery/gallery-010.jpeg", "caption": "The brightness we bring into the room." },
+        { "id": 11, "src": "/gallery/gallery-011.jpeg", "caption": "A memory worth returning to." },
+        { "id": 12, "src": "/gallery/gallery-012.jpeg", "caption": "Two people, one growing story." },
+        { "id": 13, "src": "/gallery/gallery-013.jpeg", "caption": "A day that stayed with us." },
+        { "id": 14, "src": "/gallery/gallery-014.jpeg", "caption": "The quiet magic of being known." },
+        { "id": 15, "src": "/gallery/gallery-015.jpeg", "caption": "Another page in our favorite story." },
+        { "id": 16, "src": "/gallery/gallery-016.jpeg", "caption": "A bright memory from Julia and Suliaman." },
+        { "id": 17, "src": "/gallery/gallery-017.jpeg", "caption": "The little details are the big things." },
+        { "id": 18, "src": "/gallery/gallery-018.mp4", "type": "video", "caption": "A moving memory we can visit again." },
+        { "id": 19, "src": "/gallery/gallery-019.mp4", "type": "video", "caption": "A laugh that refuses to stay still." },
+        { "id": 20, "src": "/gallery/gallery-020.mp4", "type": "video", "caption": "A few seconds of our forever." },
+        { "id": 21, "src": "/gallery/gallery-021.mp4", "type": "video", "caption": "The story continues in motion." },
+        { "id": 22, "src": "/gallery/gallery-022.mp4", "type": "video", "caption": "A small scene with a big feeling." },
+        { "id": 23, "src": "/gallery/gallery-023.mp4", "type": "video", "caption": "Joy looks good on us." },
+        { "id": 24, "src": "/gallery/gallery-024.mp4", "type": "video", "caption": "Another moment to replay." },
+        { "id": 25, "src": "/gallery/gallery-025.mp4", "type": "video", "caption": "Us, exactly as we are." }
+      ]
+    }
+  ]
+}
