@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ArrowDown, Moon, Sparkles, Heart, MessageCircleHeart, Watch, CalendarHeart, Infinity as InfinityIcon, ScrollText, Feather } from 'lucide-react'
 import { EnvelopeLetter } from '@/components/envelope-letter'
 import { CustomCursor } from '@/components/custom-cursor'
 import { ScrollProgressBar } from '@/components/progress-bar'
-import { AnniversaryLock } from '@/components/anniversary-lock'
 import anniversaryData from '@/data/anniversary.json'
 import galleryData from '@/data/gallery.json'
 import { isAnniversaryEntered } from '@/lib/unlock'
@@ -140,30 +140,32 @@ function Greeting({ onEnter }: { onEnter: () => void }) {
 }
 
 export default function AnniversaryExperience() {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
-  const [isLocked, setIsLocked] = useState(true)
+  const [entered, setEntered] = useState(false)
   const [selected, setSelected] = useState<GalleryItem | null>(null)
   const [greetingOpen, setGreetingOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     window.scrollTo(0, 0)
-    const checkLockStatus = () => setIsLocked(!isAnniversaryEntered())
-    checkLockStatus()
-    const interval = setInterval(checkLockStatus, 1000)
-    return () => clearInterval(interval)
-  }, [])
+    if (!isAnniversaryEntered()) {
+      router.replace('/seal')
+      return
+    }
+    setEntered(true)
+  }, [router])
 
   useEffect(() => {
-    if (!isLocked && mounted && typeof window !== 'undefined') {
+    if (entered && mounted && typeof window !== 'undefined') {
       try {
         if (!sessionStorage.getItem(GREETING_KEY)) setGreetingOpen(true)
       } catch {}
     }
-  }, [isLocked, mounted])
+  }, [entered, mounted])
 
   if (!mounted) return null
-  if (isLocked) return <AnniversaryLock onUnlock={() => setIsLocked(false)} />
+  if (!entered) return null
 
   const sections = validateSections(galleryData.anniversarySections as ContentSection[])
   const raw = (sections[0]?.items || []) as GalleryItem[]

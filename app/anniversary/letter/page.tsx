@@ -5,34 +5,25 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import anniversaryData from '@/data/anniversary.json'
 import { isAnniversaryEntered } from '@/lib/unlock'
-import { AnniversaryLock } from '@/components/anniversary-lock'
 
 export default function AnniversaryLetterPage() {
   const router = useRouter()
   const [mounted, setMounted] = useState(false)
-  const [isLocked, setIsLocked] = useState(true)
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const checkLockStatus = () => {
-      if (!isAnniversaryEntered()) {
-        setIsLocked(true)
-      } else {
-        setIsLocked(false)
-      }
+    if (!isAnniversaryEntered()) {
+      router.replace('/seal')
+      return
     }
-    checkLockStatus()
-    const interval = setInterval(checkLockStatus, 1000)
-    return () => clearInterval(interval)
-  }, [])
+    setEntered(true)
+  }, [router])
 
   const letter = anniversaryData.letter
 
   if (!mounted) return null
-
-  if (isLocked) {
-    return <AnniversaryLock onUnlock={() => setIsLocked(false)} />
-  }
+  if (!entered) return null
 
   return (
     <main className="min-h-screen bg-[#F4EFE8] px-6 py-16 sm:px-10 sm:py-20">

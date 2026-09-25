@@ -1,34 +1,32 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { isAnniversaryEntered } from '@/lib/unlock'
 import { FadeIn } from '@/components/fade-in'
 import { Section } from '@/components/section'
 import { PhotoGallery } from '@/components/photo-gallery'
 import { LoveBubbleBackground } from '@/components/love-bubble-background'
-import { AnniversaryLock } from '@/components/anniversary-lock'
 import us from '@/data/us.json'
 import gallery from '@/data/gallery.json'
 
 export default function Us2YearsPage() {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
-  const [isLocked, setIsLocked] = useState(true)
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const checkLockStatus = () => {
-      setIsLocked(!isAnniversaryEntered())
+    if (!isAnniversaryEntered()) {
+      router.replace('/seal')
+      return
     }
-    checkLockStatus()
-    const interval = setInterval(checkLockStatus, 1000)
-    return () => clearInterval(interval)
-  }, [])
+    setEntered(true)
+  }, [router])
 
   if (!mounted) return null
 
-  if (isLocked) {
-    return <AnniversaryLock onUnlock={() => setIsLocked(false)} />
-  }
+  if (!entered) return null
 
   return (
     <main className="relative overflow-hidden bg-background">

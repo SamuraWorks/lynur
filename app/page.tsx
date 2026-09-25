@@ -5,8 +5,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { CountdownTimer } from '@/components/countdown'
-import { isAnniversaryUnlocked } from '@/lib/unlock'
 
 const HER_IMG = '/gallery/gallery-006.jpeg'
 const HIS_IMG = '/gallery/gallery-011.jpeg'
@@ -87,7 +85,6 @@ function Clue({ clue, open, onToggle }: { clue: (typeof CLUES)[number]; open: bo
 
 export default function HomePage() {
   const router = useRouter()
-  const [isUnlocked, setIsUnlocked] = useState<boolean | null>(null)
   const [step, setStep] = useState(0)
   const [game, setGame] = useState(0)
   const [repliying, setRepliying] = useState<number | null>(null)
@@ -95,10 +92,6 @@ export default function HomePage() {
   const [clueOpen, setClueOpen] = useState([false, false, false])
   const [answered, setAnswered] = useState(false)
 
-  useEffect(() => setIsUnlocked(isAnniversaryUnlocked()), [])
-
-  const locked = isUnlocked === false
-  const loading = isUnlocked === null
   const journeyFull = step >= JOURNEY.length
   const gameDone = game >= WAIT_GAMES.length
   const canReveal = journeyFull && gameDone
@@ -321,25 +314,14 @@ export default function HomePage() {
               </p>
 
               <div className="mt-9">
-                {loading ? (
-                  <div className="h-12" />
-                ) : locked ? (
-                  <div className="flex flex-col items-center gap-5">
-                    <CountdownTimer />
-                    <p className="font-jost text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                      the door opens 26 september
-                    </p>
-                  </div>
-                ) : (
                   <button
                     type="button"
-                    onClick={() => router.push('/anniversary')}
+                    onClick={() => router.push('/seal')}
                     className="group inline-flex items-center gap-3 rounded-full bg-rose px-9 py-4 font-jost text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-[0_18px_44px_-14px_rgba(232,93,117,0.65)] transition-all duration-300 hover:bg-deep-rose hover:shadow-[0_24px_54px_-14px_rgba(201,63,92,0.75)] active:scale-[0.98]"
                   >
                     open the door
                     <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
-                )}
               </div>
 
               <p className="mt-6 font-jost text-[10px] uppercase tracking-[0.35em] text-muted-foreground/80">
