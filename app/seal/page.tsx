@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { WaxSeal } from '@/components/wax-seal'
+import { saveAnniversaryEntered } from '@/lib/unlock'
 
 export default function SealPage() {
   const router = useRouter()
@@ -22,7 +23,8 @@ export default function SealPage() {
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('anniversary_seal_broken', 'true')
     }
-    router.push('/countdown')
+    saveAnniversaryEntered()
+    router.push('/anniversary')
   }
 
   return (
